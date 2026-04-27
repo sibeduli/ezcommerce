@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SaasDash",
+  title: "EZCommerce",
   description: "Modern admin dashboard",
 };
 
