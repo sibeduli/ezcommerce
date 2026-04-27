@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
+import { ThemeProvider } from "next-themes";
 import "../globals.css";
 import { hasLocale, locales } from "./dictionaries";
 
@@ -32,8 +33,21 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={lang} className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full font-sans">{children}</body>
+    <html
+      lang={lang}
+      className={`${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-full font-sans">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

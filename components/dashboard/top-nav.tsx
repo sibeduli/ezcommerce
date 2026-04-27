@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import { Search, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageToggle } from "@/components/language-toggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { logoutAction } from "@/app/[lang]/login/actions";
 import { MobileSidebar } from "./sidebar";
+import { CommandMenu, useCommandMenu } from "./command-menu";
 
 interface TopNavProps {
   user: {
@@ -28,6 +28,7 @@ interface TopNavProps {
 export function TopNav({ user }: TopNavProps) {
   const pathname = usePathname();
   const lang = pathname.split("/")[1] || "en";
+  const { open: commandOpen, setOpen: setCommandOpen } = useCommandMenu();
 
   const initials = user.name
     ? user.name
@@ -42,14 +43,16 @@ export function TopNav({ user }: TopNavProps) {
       <div className="flex items-center gap-2">
         <MobileSidebar />
         {/* Search */}
-        <div className="relative hidden w-80 sm:block">
-          <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-          <Input
-            type="search"
-            placeholder="Type a command or search..."
-            className="pl-9"
-          />
-        </div>
+        <button
+          onClick={() => setCommandOpen(true)}
+          className="border-input bg-background text-muted-foreground hover:bg-accent hover:text-accent-foreground relative hidden h-9 w-80 items-center justify-start rounded-md border px-3 text-sm transition-colors sm:flex"
+        >
+          <Search className="mr-2 h-4 w-4" />
+          <span>Type a command or search...</span>
+          <kbd className="bg-muted text-muted-foreground pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium select-none sm:flex">
+            <span className="text-xs">⌘</span>K
+          </kbd>
+        </button>
       </div>
 
       {/* Right side */}
@@ -105,6 +108,8 @@ export function TopNav({ user }: TopNavProps) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
+      <CommandMenu lang={lang} open={commandOpen} setOpen={setCommandOpen} />
     </header>
   );
 }
