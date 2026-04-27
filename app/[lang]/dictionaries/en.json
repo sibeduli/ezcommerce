@@ -1,4 +1,23 @@
 {
+  "register": {
+    "title": "Create an account",
+    "subtitle": "Enter your details to get started",
+    "name": "Full name",
+    "namePlaceholder": "John Doe",
+    "email": "Email",
+    "emailPlaceholder": "name@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordPlaceholder": "••••••••",
+    "terms": "I agree to the Terms of Service and Privacy Policy",
+    "signUp": "Create account",
+    "hasAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "testimonial": "Join thousands of businesses that trust EZCommerce to power their e-commerce operations.",
+    "testimonialAuthor": "EZCommerce Team",
+    "copyright": "© 2026 EZCommerce. All rights reserved."
+  },
   "login": {
     "title": "Welcome back",
     "subtitle": "Enter your credentials to access your account",

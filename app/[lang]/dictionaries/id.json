@@ -1,4 +1,23 @@
 {
+  "register": {
+    "title": "Buat akun",
+    "subtitle": "Masukkan detail Anda untuk memulai",
+    "name": "Nama lengkap",
+    "namePlaceholder": "John Doe",
+    "email": "Email",
+    "emailPlaceholder": "nama@contoh.com",
+    "password": "Kata Sandi",
+    "passwordPlaceholder": "••••••••",
+    "confirmPassword": "Konfirmasi kata sandi",
+    "confirmPasswordPlaceholder": "••••••••",
+    "terms": "Saya setuju dengan Ketentuan Layanan dan Kebijakan Privasi",
+    "signUp": "Buat akun",
+    "hasAccount": "Sudah punya akun?",
+    "signIn": "Masuk",
+    "testimonial": "Bergabunglah dengan ribuan bisnis yang mempercayai EZCommerce untuk menjalankan operasi e-commerce mereka.",
+    "testimonialAuthor": "Tim EZCommerce",
+    "copyright": "© 2026 EZCommerce. Hak cipta dilindungi."
+  },
   "login": {
     "title": "Selamat datang kembali",
     "subtitle": "Masukkan kredensial Anda untuk mengakses akun",
