@@ -9,6 +9,7 @@ import {
   PanelLeft,
   Menu,
   Store,
+  ShoppingCart,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -27,6 +28,7 @@ import {
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { name: "E-Shop", href: "/shop", icon: Store },
+  { name: "Cart", href: "/cart", icon: ShoppingCart },
 ];
 
 function SidebarContent({

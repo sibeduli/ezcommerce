@@ -38,6 +38,26 @@
   "common": {
     "appName": "EZCommerce"
   },
+  "cart": {
+    "title": "Keranjang Belanja",
+    "emptyTitle": "Keranjang Anda kosong",
+    "emptySubtitle": "Sepertinya Anda belum menambahkan apa pun ke keranjang.",
+    "continueShopping": "Lanjutkan Belanja",
+    "items": "barang",
+    "item": "barang",
+    "quantity": "Jumlah",
+    "price": "Harga",
+    "remove": "Hapus",
+    "orderSummary": "Ringkasan Pesanan",
+    "subtotal": "Subtotal",
+    "discount": "Diskon",
+    "shipping": "Pengiriman",
+    "freeShipping": "Gratis",
+    "total": "Total",
+    "checkout": "Lanjutkan ke Pembayaran",
+    "promoCode": "Masukkan kode promo",
+    "apply": "Terapkan"
+  },
   "shop": {
     "title": "E-Shop",
     "searchPlaceholder": "Cari produk...",
