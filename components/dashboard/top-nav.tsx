@@ -22,6 +22,7 @@ interface TopNavProps {
     id: string;
     email: string;
     name: string | null;
+    roles: string[];
   };
 }
 
@@ -29,6 +30,7 @@ export function TopNav({ user }: TopNavProps) {
   const pathname = usePathname();
   const lang = pathname.split("/")[1] || "en";
   const { open: commandOpen, setOpen: setCommandOpen } = useCommandMenu();
+  const isAdmin = user.roles.includes("admin");
 
   const initials = user.name
     ? user.name
@@ -42,17 +44,19 @@ export function TopNav({ user }: TopNavProps) {
       {/* Left side */}
       <div className="flex items-center gap-2">
         <MobileSidebar />
-        {/* Search */}
-        <button
-          onClick={() => setCommandOpen(true)}
-          className="border-input bg-background text-muted-foreground hover:bg-accent hover:text-accent-foreground relative hidden h-9 w-80 items-center justify-start rounded-md border px-3 text-sm transition-colors sm:flex"
-        >
-          <Search className="mr-2 h-4 w-4" />
-          <span>Type a command or search...</span>
-          <kbd className="bg-muted text-muted-foreground pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium select-none sm:flex">
-            <span className="text-xs">⌘</span>K
-          </kbd>
-        </button>
+        {/* Search - Admin only */}
+        {isAdmin && (
+          <button
+            onClick={() => setCommandOpen(true)}
+            className="border-input bg-background text-muted-foreground hover:bg-accent hover:text-accent-foreground relative hidden h-9 w-80 items-center justify-start rounded-md border px-3 text-sm transition-colors sm:flex"
+          >
+            <Search className="mr-2 h-4 w-4" />
+            <span>Type a command or search...</span>
+            <kbd className="bg-muted text-muted-foreground pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium select-none sm:flex">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </button>
+        )}
       </div>
 
       {/* Right side */}
@@ -109,7 +113,9 @@ export function TopNav({ user }: TopNavProps) {
         </DropdownMenu>
       </div>
 
-      <CommandMenu lang={lang} open={commandOpen} setOpen={setCommandOpen} />
+      {isAdmin && (
+        <CommandMenu lang={lang} open={commandOpen} setOpen={setCommandOpen} />
+      )}
     </header>
   );
 }

@@ -66,7 +66,17 @@ export async function getSession() {
 
   const session = await prisma.session.findUnique({
     where: { token },
-    include: { user: true },
+    include: {
+      user: {
+        include: {
+          roles: {
+            include: {
+              role: true,
+            },
+          },
+        },
+      },
+    },
   });
 
   if (!session) return null;
@@ -86,7 +96,17 @@ export async function getSession() {
 
 export async function getCurrentUser() {
   const session = await getSession();
-  return session?.user ?? null;
+  if (!session?.user) return null;
+
+  const user = session.user;
+  const roles = user.roles.map((r: { role: { name: string } }) => r.role.name);
+
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    roles,
+  };
 }
 
 export async function logout() {
