@@ -12,6 +12,11 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const navigation = [
   { name: "Dashboard", href: "/en/dashboard", icon: LayoutDashboard },
@@ -85,11 +90,9 @@ function SidebarContent({
       <nav className={cn("flex-1 space-y-1", collapsed ? "px-2 py-2" : "p-4")}>
         {navigation.map((item) => {
           const isActive = pathname.includes(item.href);
-          return (
+          const linkContent = (
             <Link
-              key={item.name}
               href={item.href}
-              title={collapsed ? item.name : undefined}
               onClick={onClose}
               className={cn(
                 "flex items-center rounded-lg text-sm font-medium transition-colors",
@@ -103,6 +106,19 @@ function SidebarContent({
               {!collapsed && item.name}
             </Link>
           );
+
+          if (collapsed && !isMobile) {
+            return (
+              <Tooltip key={item.name}>
+                <TooltipTrigger asChild>{linkContent}</TooltipTrigger>
+                <TooltipContent side="right">
+                  <p>{item.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            );
+          }
+
+          return <div key={item.name}>{linkContent}</div>;
         })}
       </nav>
     </>
