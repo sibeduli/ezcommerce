@@ -58,6 +58,22 @@
     "promoCode": "Masukkan kode promo",
     "apply": "Terapkan"
   },
+  "roles": {
+    "title": "Manajemen Peran",
+    "description": "Kelola peran dan izin pengguna",
+    "createRole": "Buat Peran",
+    "editRole": "Edit Peran",
+    "deleteRole": "Hapus Peran",
+    "roleName": "Nama Peran",
+    "roleDescription": "Deskripsi",
+    "permissions": "Izin",
+    "users": "Pengguna",
+    "noRoles": "Tidak ada peran",
+    "assignUsers": "Tetapkan Pengguna",
+    "removeUser": "Hapus Pengguna",
+    "save": "Simpan",
+    "cancel": "Batal"
+  },
   "shop": {
     "title": "E-Shop",
     "searchPlaceholder": "Cari produk...",

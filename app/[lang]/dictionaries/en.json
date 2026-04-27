@@ -58,6 +58,22 @@
     "promoCode": "Enter promo code",
     "apply": "Apply"
   },
+  "roles": {
+    "title": "Role Management",
+    "description": "Manage user roles and permissions",
+    "createRole": "Create Role",
+    "editRole": "Edit Role",
+    "deleteRole": "Delete Role",
+    "roleName": "Role Name",
+    "roleDescription": "Description",
+    "permissions": "Permissions",
+    "users": "Users",
+    "noRoles": "No roles found",
+    "assignUsers": "Assign Users",
+    "removeUser": "Remove User",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
   "shop": {
     "title": "E-Shop",
     "searchPlaceholder": "Search products...",

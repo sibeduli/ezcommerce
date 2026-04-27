@@ -10,6 +10,7 @@ import {
   Menu,
   Store,
   ShoppingCart,
+  Shield,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,7 @@ const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { name: "E-Shop", href: "/shop", icon: Store },
   { name: "Cart", href: "/cart", icon: ShoppingCart },
+  { name: "Roles", href: "/roles", icon: Shield },
 ];
 
 function SidebarContent({
