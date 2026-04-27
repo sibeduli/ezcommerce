@@ -48,7 +48,7 @@ export default async function LoginPage({
       </div>
 
       {/* Right side - Login form */}
-      <div className="bg-background relative flex w-full flex-col justify-center px-8 lg:w-1/2 lg:px-16 xl:px-24">
+      <div className="bg-background relative flex w-full flex-col justify-center overflow-visible px-8 lg:w-1/2 lg:px-16 xl:px-24">
         {/* Language and theme toggles */}
         <div className="absolute top-6 right-6 flex items-center gap-2">
           <LanguageToggle />
