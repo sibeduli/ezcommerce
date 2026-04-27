@@ -37,5 +37,23 @@
   },
   "common": {
     "appName": "EZCommerce"
+  },
+  "shop": {
+    "title": "E-Shop",
+    "searchPlaceholder": "Cari produk...",
+    "filters": "Filter",
+    "categories": "Kategori",
+    "allCategories": "Semua Kategori",
+    "priceRange": "Rentang Harga",
+    "sortBy": "Urutkan",
+    "newest": "Terbaru",
+    "priceLowHigh": "Harga: Rendah ke Tinggi",
+    "priceHighLow": "Harga: Tinggi ke Rendah",
+    "popular": "Populer",
+    "addToCart": "Tambah ke Keranjang",
+    "outOfStock": "Stok Habis",
+    "products": "Produk",
+    "noProducts": "Produk tidak ditemukan",
+    "clearFilters": "Hapus filter"
   }
 }

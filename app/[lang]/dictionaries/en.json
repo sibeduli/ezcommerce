@@ -37,5 +37,23 @@
   },
   "common": {
     "appName": "EZCommerce"
+  },
+  "shop": {
+    "title": "E-Shop",
+    "searchPlaceholder": "Search products...",
+    "filters": "Filters",
+    "categories": "Categories",
+    "allCategories": "All Categories",
+    "priceRange": "Price Range",
+    "sortBy": "Sort by",
+    "newest": "Newest",
+    "priceLowHigh": "Price: Low to High",
+    "priceHighLow": "Price: High to Low",
+    "popular": "Popular",
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock",
+    "products": "Products",
+    "noProducts": "No products found",
+    "clearFilters": "Clear filters"
   }
 }

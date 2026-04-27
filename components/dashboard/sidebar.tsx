@@ -3,7 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, PanelLeftClose, PanelLeft, Menu } from "lucide-react";
+import {
+  LayoutDashboard,
+  PanelLeftClose,
+  PanelLeft,
+  Menu,
+  Store,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,7 +25,8 @@ import {
 } from "@/components/ui/tooltip";
 
 const navigation = [
-  { name: "Dashboard", href: "/en/dashboard", icon: LayoutDashboard },
+  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { name: "E-Shop", href: "/shop", icon: Store },
 ];
 
 function SidebarContent({
@@ -89,10 +96,12 @@ function SidebarContent({
       {/* Navigation */}
       <nav className={cn("flex-1 space-y-1", collapsed ? "px-2 py-2" : "p-4")}>
         {navigation.map((item) => {
+          const lang = pathname.split("/")[1] || "en";
+          const fullHref = `/${lang}${item.href}`;
           const isActive = pathname.includes(item.href);
           const linkContent = (
             <Link
-              href={item.href}
+              href={fullHref}
               onClick={onClose}
               className={cn(
                 "flex items-center rounded-lg text-sm font-medium transition-colors",
