@@ -27,10 +27,10 @@ import {
 } from "@/components/ui/tooltip";
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "E-Shop", href: "/shop", icon: Store },
-  { name: "Cart", href: "/cart", icon: ShoppingCart },
-  { name: "Roles", href: "/roles", icon: Shield },
+  { key: "dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { key: "eshop", href: "/shop", icon: Store },
+  { key: "cart", href: "/cart", icon: ShoppingCart },
+  { key: "roles", href: "/roles", icon: Shield },
 ];
 
 function SidebarContent({
@@ -38,11 +38,13 @@ function SidebarContent({
   setCollapsed,
   onClose,
   isMobile = false,
+  navDict,
 }: {
   collapsed: boolean;
   setCollapsed: (v: boolean) => void;
   onClose?: () => void;
   isMobile?: boolean;
+  navDict: Record<string, string>;
 }) {
   const pathname = usePathname();
 
@@ -103,6 +105,7 @@ function SidebarContent({
           const lang = pathname.split("/")[1] || "en";
           const fullHref = `/${lang}${item.href}`;
           const isActive = pathname.includes(item.href);
+          const itemName = navDict[item.key];
           const linkContent = (
             <Link
               href={fullHref}
@@ -116,29 +119,29 @@ function SidebarContent({
               )}
             >
               <item.icon className="h-5 w-5 shrink-0" />
-              {!collapsed && item.name}
+              {!collapsed && itemName}
             </Link>
           );
 
           if (collapsed && !isMobile) {
             return (
-              <Tooltip key={item.name}>
+              <Tooltip key={item.key}>
                 <TooltipTrigger asChild>{linkContent}</TooltipTrigger>
                 <TooltipContent side="right">
-                  <p>{item.name}</p>
+                  <p>{itemName}</p>
                 </TooltipContent>
               </Tooltip>
             );
           }
 
-          return <div key={item.name}>{linkContent}</div>;
+          return <div key={item.key}>{linkContent}</div>;
         })}
       </nav>
     </>
   );
 }
 
-export function Sidebar() {
+export function Sidebar({ navDict }: { navDict: Record<string, string> }) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -148,12 +151,20 @@ export function Sidebar() {
         collapsed ? "w-16" : "w-64"
       )}
     >
-      <SidebarContent collapsed={collapsed} setCollapsed={setCollapsed} />
+      <SidebarContent
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+        navDict={navDict}
+      />
     </aside>
   );
 }
 
-export function MobileSidebar() {
+export function MobileSidebar({
+  navDict,
+}: {
+  navDict: Record<string, string>;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -171,6 +182,7 @@ export function MobileSidebar() {
             setCollapsed={() => {}}
             onClose={() => setOpen(false)}
             isMobile
+            navDict={navDict}
           />
         </div>
       </SheetContent>

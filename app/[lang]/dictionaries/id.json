@@ -38,6 +38,12 @@
   "common": {
     "appName": "EZCommerce"
   },
+  "nav": {
+    "dashboard": "Dasbor",
+    "eshop": "E-Shop",
+    "cart": "Keranjang",
+    "roles": "Peran"
+  },
   "cart": {
     "title": "Keranjang Belanja",
     "emptyTitle": "Keranjang Anda kosong",

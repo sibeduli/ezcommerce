@@ -38,6 +38,12 @@
   "common": {
     "appName": "EZCommerce"
   },
+  "nav": {
+    "dashboard": "Dashboard",
+    "eshop": "E-Shop",
+    "cart": "Cart",
+    "roles": "Roles"
+  },
   "cart": {
     "title": "Shopping Cart",
     "emptyTitle": "Your cart is empty",

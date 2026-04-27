@@ -24,9 +24,10 @@ interface TopNavProps {
     name: string | null;
     roles: string[];
   };
+  navDict: Record<string, string>;
 }
 
-export function TopNav({ user }: TopNavProps) {
+export function TopNav({ user, navDict }: TopNavProps) {
   const pathname = usePathname();
   const lang = pathname.split("/")[1] || "en";
   const { open: commandOpen, setOpen: setCommandOpen } = useCommandMenu();
@@ -43,7 +44,7 @@ export function TopNav({ user }: TopNavProps) {
     <header className="border-border bg-card sticky top-0 z-50 flex h-16 items-center justify-between border-b px-4 md:px-6">
       {/* Left side */}
       <div className="flex items-center gap-2">
-        <MobileSidebar />
+        <MobileSidebar navDict={navDict} />
         {/* Search - Admin only */}
         {isAdmin && (
           <button
