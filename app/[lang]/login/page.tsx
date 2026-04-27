@@ -1,12 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getDictionary, hasLocale, type Locale } from "../dictionaries";
+import { LoginForm } from "./login-client";
 
 export default async function LoginPage({
   params,
@@ -69,70 +66,7 @@ export default async function LoginPage({
             </Link>
           </div>
 
-          <div className="space-y-2">
-            <h1 className="text-2xl font-bold tracking-tight">
-              {dict.login.title}
-            </h1>
-            <p className="text-muted-foreground">{dict.login.subtitle}</p>
-          </div>
-
-          <form className="mt-8 space-y-6">
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">{dict.login.email}</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder={dict.login.emailPlaceholder}
-                  autoComplete="email"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password">{dict.login.password}</Label>
-                  <Link
-                    href={`/${lang}/forgot-password`}
-                    className="text-primary text-sm font-medium hover:underline"
-                  >
-                    {dict.login.forgotPassword}
-                  </Link>
-                </div>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder={dict.login.passwordPlaceholder}
-                  autoComplete="current-password"
-                  required
-                />
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <Checkbox id="remember" />
-                <Label
-                  htmlFor="remember"
-                  className="text-muted-foreground text-sm font-normal"
-                >
-                  {dict.login.rememberMe}
-                </Label>
-              </div>
-            </div>
-
-            <Button type="submit" className="w-full">
-              {dict.login.signIn}
-            </Button>
-          </form>
-
-          <p className="text-muted-foreground mt-8 text-center text-sm">
-            {dict.login.noAccount}{" "}
-            <Link
-              href={`/${lang}/register`}
-              className="text-primary font-medium hover:underline"
-            >
-              {dict.login.signUp}
-            </Link>
-          </p>
+          <LoginForm lang={lang} dict={dict.login} />
         </div>
       </div>
     </div>

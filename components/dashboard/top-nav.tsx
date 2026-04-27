@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Search, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,8 +14,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { logoutAction } from "@/app/[lang]/login/actions";
 
-export function TopNav() {
+interface TopNavProps {
+  user: {
+    id: string;
+    email: string;
+    name: string | null;
+  };
+}
+
+export function TopNav({ user }: TopNavProps) {
+  const pathname = usePathname();
+  const lang = pathname.split("/")[1] || "en";
+
+  const initials = user.name
+    ? user.name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+    : user.email[0].toUpperCase();
   return (
     <header className="border-border bg-card sticky top-0 z-50 flex h-16 items-center justify-between border-b px-6">
       {/* Search */}
@@ -43,7 +63,7 @@ export function TopNav() {
             <Button variant="ghost" className="relative h-9 w-9 rounded-full">
               <Avatar className="h-9 w-9">
                 <AvatarFallback className="bg-primary text-primary-foreground">
-                  U
+                  {initials}
                 </AvatarFallback>
               </Avatar>
             </Button>
@@ -52,13 +72,15 @@ export function TopNav() {
             <div className="flex items-center gap-2 p-2">
               <Avatar className="h-8 w-8">
                 <AvatarFallback className="bg-primary text-primary-foreground">
-                  U
+                  {initials}
                 </AvatarFallback>
               </Avatar>
               <div className="flex flex-col">
-                <span className="text-sm font-medium">User</span>
+                <span className="text-sm font-medium">
+                  {user.name || "User"}
+                </span>
                 <span className="text-muted-foreground text-xs">
-                  user@example.com
+                  {user.email}
                 </span>
               </div>
             </div>
@@ -66,7 +88,10 @@ export function TopNav() {
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive">
+            <DropdownMenuItem
+              className="text-destructive"
+              onClick={() => logoutAction(lang)}
+            >
               Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
