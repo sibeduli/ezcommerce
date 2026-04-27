@@ -15,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { logoutAction } from "@/app/[lang]/login/actions";
+import { MobileSidebar } from "./sidebar";
 
 interface TopNavProps {
   user: {
@@ -36,15 +37,19 @@ export function TopNav({ user }: TopNavProps) {
         .toUpperCase()
     : user.email[0].toUpperCase();
   return (
-    <header className="border-border bg-card sticky top-0 z-50 flex h-16 items-center justify-between border-b px-6">
-      {/* Search */}
-      <div className="relative w-80">
-        <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-        <Input
-          type="search"
-          placeholder="Type a command or search..."
-          className="pl-9"
-        />
+    <header className="border-border bg-card sticky top-0 z-50 flex h-16 items-center justify-between border-b px-4 md:px-6">
+      {/* Left side */}
+      <div className="flex items-center gap-2">
+        <MobileSidebar />
+        {/* Search */}
+        <div className="relative hidden w-80 sm:block">
+          <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+          <Input
+            type="search"
+            placeholder="Type a command or search..."
+            className="pl-9"
+          />
+        </div>
       </div>
 
       {/* Right side */}
@@ -54,8 +59,11 @@ export function TopNav({ user }: TopNavProps) {
           <span className="bg-primary absolute top-1.5 right-1.5 h-2 w-2 rounded-full" />
         </Button>
 
-        <ThemeToggle />
         <LanguageToggle />
+        <ThemeToggle />
+
+        {/* Separator */}
+        <div className="via-border mx-1 h-6 w-px bg-gradient-to-b from-transparent to-transparent" />
 
         {/* User menu */}
         <DropdownMenu>
